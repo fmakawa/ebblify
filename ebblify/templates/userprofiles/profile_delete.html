@@ -1,0 +1,25 @@
+{% extends 'userprofiles/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% load i18n %}
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+    <h4 class="title">{% trans "Delete your account" %}</h4>
+  </div>
+  <div class="card-content">
+      <h2>{% trans "Are you sure?" %}</h2>
+        <form id="teacher-messages'" action="{% url 'profile-delete' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <button type="submit" class="btn btn-primary pull-right" name="edit_profile">{% trans "Delete"%}</button>
+        </form>
+      <div class="clearfix"></div>
+    </form>
+  </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'basepage.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% load static %}
+{% load bootstrap %}
+
+{% block import %}
+<link rel="stylesheet" href="{% static 'css/landing-styles.css' %}" media="screen">
+{% endblock import %}
+
+{% block javascript %}
+<script src="{% static 'js/landing_page.js' %}" type="application/javascript"></script>
+{% endblock javascript %}
+
+{% block content %}
+<div style="padding-top:20vh">
+<form id="register-form" method="POST" >
+	{% csrf_token %}
+	{{ form.as_p}}
+	<button type ="submit">Sign Up </button>
+</form>
+</div>
+{% endblock content %}

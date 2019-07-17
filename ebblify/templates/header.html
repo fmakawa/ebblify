@@ -1,0 +1,81 @@
+{% load staticfiles %}
+{% load static %}
+{% load i18n %}
+{% include "_logindialog.html" %}
+
+<nav id="header" class="navbar navbar-default  {% if request.path != '/' %}scrolled{% endif %}">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header ">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">
+					<img id="logo" style="max-width:50px; height:auto; margin-top:-10px" src="{% static 'img/ebblifylogov3.png' %}">
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					{% if request.path != "/" %}
+					<li><a data-scroll href="/#main">{% trans "Stuff One" %}</a></li>
+					<li><a data-scroll href="/#stuff2">{% trans "Stuff Two" %}</a></li>
+			<li><a data-scroll href="/#stuff3">{% trans "Stuff Three" %}</a></li>
+
+					{% else %}
+					<li><a data-scroll href="#main">{% trans "Stuff One" %}</a></li>
+					<li><a data-scroll href="#stuff2">{% trans "Stuff Two" %}</a></li>
+			<li><a data-scroll href="#stuff3">{% trans "Stuff Three" %}</a></li>
+
+					{% endif %}
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'profile-edit' %}">{{ user.username }}</a></li>
+					<li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i></a></li>
+				{% else %}
+					{% if request.path != "/" %}
+						<li><a data-scroll href="/admin">{% trans "Admin" %}</a></li>
+					{% else %}
+						<li><a data-scroll href="admin">{% trans "Admin" %}</a></li>
+					{% endif %}
+					<li><a href="" data-toggle="modal" data-target="#login-modal">{% trans "Login" %}</a></li>
+				{% endif %}
+				</ul>
+			</div><!-- /.navbar-collapse -->
+	</div><!-- /.container -->
+</nav>
+
+<style is="custom-style">
+#header {
+	background-color: transparent;
+	border: none;
+	z-index: 999;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+#header.scrolled {
+	background-color:#03a7d5;
+	transition: all 0.5s ease;
+}
+
+button.navbar-toggle.collapsed{
+    margin-top:10px;
+}
+
+
+#headerList{
+    border: 1px solid #FFFFFF;
+    background-color: hsla(0,0%,100%,.15);
+}
+
+#headerList img{
+    width: 30px;
+}
+
+</style>

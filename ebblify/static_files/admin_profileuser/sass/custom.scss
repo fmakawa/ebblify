@@ -1,0 +1,30 @@
+/* Variables END */
+
+$jobylon-blue: ##03a7d5;
+$jobylon-yellow: #F5BE01;
+
+/* Variables START */
+/* Teacher Register Start */
+
+.card-header{
+  background-color: $jobylon-blue !important;
+}
+
+.btn-primary{
+  background-color: $jobylon-blue !important;
+}
+
+ .nav li.active a{
+  background-color: $jobylon-blue !important;
+
+}
+
+.text-primary{
+  color: $jobylon-blue !important;
+}
+/* Teacher Register End */
+.logo-big{
+  width: 80%;
+  padding: 5%;
+  margin: auto;
+}

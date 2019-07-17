@@ -1,0 +1,39 @@
+{% load i18n %}
+
+<nav class="navbar navbar-transparent navbar-absolute" style ="position:fixed;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">ebblify for <strong>You</strong></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">
+             <i class="material-icons">person</i>
+             <p class="hidden-lg hidden-md">Profile</p>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'profile-edit' %}">{% trans 'Edit Profile' %}</a></li>
+            <li><a href="{% url 'profile-delete' %}">{% trans 'Delete Account' %}</a></li>
+            <li><a href="{% url 'logout' %}">{% trans 'Exit' %}</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<style is="custom-style">
+.navbar{
+	margin-bottom: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+</style>

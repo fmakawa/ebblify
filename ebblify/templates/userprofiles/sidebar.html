@@ -1,0 +1,29 @@
+{% load static %}
+{% load staticfiles %}
+{% load i18n %}
+
+<div class="sidebar" data-color="purple" >
+
+  <div class="logo">
+    <a href="/" class="simple-text">
+        <img src="{% static 'img/logo_dark_100.png' %}">
+      </a>
+  </div>
+
+  <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li>
+                <a href="{% url 'profile-edit' %}">
+                    <i class="material-icons">person</i>
+                    <p>{% trans 'Edit Profile' %}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'profileuser-list' %}">
+                    <i class="material-icons">supervisor_account</i>
+                    <p>{% trans 'Users' %}</p>
+                </a>
+            </li>
+        </ul>
+  </div>
+</div>

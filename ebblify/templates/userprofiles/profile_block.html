@@ -1,0 +1,25 @@
+{% load bootstrap %}
+{% load static %}
+{% load i18n %}
+
+<div class="card card-profile">
+  <div class="card-avatar">
+    <a href="{% url 'profile-edit' %}">
+        {% if profileuser.profile_image == "/perfil.png" %}
+            <img class="img" src="{% static 'img/perfil.png' %}" />
+        {% else %}
+            <img class="img" src= "{{ profileuser.profile_image.url }}" />
+
+        {% endif %}
+    </a>
+  </div>
+  <div class="content">
+    <h4 class="card-title">{{ profileuser.first_name }} {{ profileuser.last_name }}</h4>
+    <div class="card-content">
+      <p>
+        Email: {{ profileuser.email }}
+      </p>
+
+    </div>
+  </div>
+</div>

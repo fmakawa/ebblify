@@ -1,0 +1,84 @@
+<!-- formally occurrences_student_evaluate.html -->
+{% extends 'userprofiles/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% load i18n %}
+{% block content %}
+
+<div class="card card-nav-tabs">
+  <div class="card-header">
+    <h4 class="title">{% trans "New Message "%}</h4>
+  </div>
+  <div class="card-content">
+    <div class="tab-content">
+      <div class="tab-pane active" id="profile">
+        <form id="send-message-form" action="{% url 'send-message' recipient_url=recipient.url %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+          		<label class="control-label">Message:</label>
+          		<textarea type="text" rows="5" id="message-text" name="text" class="form-control"></textarea>
+          	</div>
+            <button type="submit" value="submit" onClick="return empty()" class="btn btn-primary pull-right" required>{% trans "Send" %}</button>
+        </form>
+       </div>
+    </div>
+  </div>
+</div>
+  <div class="card card-nav-tabs">
+    <div class="card-header">
+      <h4 class="title">{% trans "Messages  "%}({{numofmes}})</h4>
+      <p class="category">{% trans "with  " %}{{ recipient.first_name }}</p>
+    </div>
+    <div class="card-content">
+      <div class="tab-content">
+        <div class="tab-pane active" id="profile" style="padding-top:25px">
+          {% for mes in totalmessages %}
+          <table class="table table-responsive bordered">
+            <thead id="senders" class="sender">
+              <tr >
+                <td>
+                  <p>{{ mes.authorone.username }}</p>
+                </td>
+                <td>
+                  <p style="text-align:right;"> {{mes.created}}</p>
+                </td>
+              </tr>
+              <thead>
+              <tbody>
+              <tr>
+                <td id="messages" colspan="2" style="padding-top:10px margin-top:10px"><p>{{ mes.text }}</p></td>
+              </tr>
+            </tbody>
+          </table>
+          {% endfor %}
+
+         </div>
+      </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+function empty() {
+    var x;
+    x = document.getElementById("message-text").value;
+    if (x == "") {
+        alert("You cannot send a blank message");
+        return false;
+    };
+}
+</script>
+<style>
+.bordered{
+  border-top: 1px solid RGB(133,139,170,0.5);
+}
+#senders {
+  background-color: RGB(3,167,213,0.1);
+  height: 10px;
+}
+#messages {
+  min-height: 30px;
+}
+</style>
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% load i18n %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+<form id="register-form" method="POST" action="{% url 'signup' %}">
+	{% csrf_token %}
+	<br>
+
+	<div class="form-group">
+		<label class="control-label">Username:</label>
+		<input type="text" id="register-username" name="username" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="control-label">Email:</label>
+		<input type="email" id="register-email" name="email" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="control-label">First Name:</label>
+		<input type="text" id="register-first_name" name="first_name" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="control-label">Last Name:</label>
+		<input type="text" id="register-lastname" name="last_name" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="control-label">{% trans "Password:" %}</label>
+		<input type="password" id="register-password" name="password1" class="form-control">
+		<p class="text-muted text-danger" id="register-passwd-error2" style="display: none;">{% trans "Please add a password" %}</p>
+		<p class="text-muted text-danger" id="register-passwd-error3" style="display: none;">{% trans "Please confirm password" %}</p>
+		<p class="text-muted text-danger" id="register-passwd-error4" style="display: none;">{% trans "Your password needs to be minimum 8 characters and include both large and small caps and at least 1 symbol(" %}<b> {% trans " !, % , & , @ , # , $ , ^ , * , ? , _ , ~ " %}</b>{% trans "). It should not be similar to your email" %}</p>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">{% trans "Repeat Password: " %}</label>
+		<input type="password" id="register-password2" name="password2" class="form-control">
+	</div>
+		<p class="text-muted text-danger" id="register-passwd-error" style="display: none;">{% trans "The passwords are not equal" %}</p>
+	<div class="form-group">
+		<label class="checkbox-inline"><input type="checkbox" name="remember" checked>{% trans "Remember me" %}</label>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" id="register-submit-button" class="btn btn-primary" style="background-color:#03a7d5; border-color:#03a7d5">{% trans "Register" %}</button>
+	</div>
+</form>
+{% endblock content %}

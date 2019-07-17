@@ -1,0 +1,43 @@
+<!-- formally occurrences.html -->
+{% extends 'userprofiles/base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% load i18n %}
+{% block content %}
+
+
+<div class="card">
+  <div class="card-header">
+    <h4 class="title">{% trans 'Current Users' %}</h4>
+
+  </div>
+  <div class="card-content table-responsive">
+    <table class="table">
+      <thead class="text-primary">
+        <th>{% trans 'Username' %}</th>
+        <th>{% trans 'First Name' %}</th>
+        <th>{% trans 'Last Name' %}</th>
+        <th>{% trans 'Email' %}</th>
+        <th>{% trans '' %}</th>
+      </thead>
+      <tbody>
+        {% for profile in profiles %}
+          <tr>
+            <td>{{ profile.username }}</td>
+            <td>{{ profile.first_name }}</td>
+            <td>{{ profile.last_name }}</td>
+            <td>{{ profile.email }}</td>
+            <td class="text-primary">
+              <a href= "{% url 'messages-page'  recipient_url=profile.url %}">
+                <button class="btn btn-primary">{% trans 'See Conversation' %}</button>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
