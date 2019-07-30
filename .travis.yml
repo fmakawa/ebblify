@@ -12,4 +12,4 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - python manage.py migrate
 script:
-  - python -m unittest discover #coverage run manage.py test 
+  - python manage.py test --settings=ebblify.settings #coverage run manage.py test #python -m unittest discover 
